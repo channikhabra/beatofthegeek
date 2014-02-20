@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: philosophy | Beat of The Geek]]></title>
+  <link href="http://beatofthegeek.com/blog/categories/philosophy/atom.xml" rel="self"/>
+  <link href="http://beatofthegeek.com/"/>
+  <updated>2014-02-20T17:47:08+05:30</updated>
+  <id>http://beatofthegeek.com/</id>
+  <author>
+    <name><![CDATA[Charanjit Singh]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Yet another post about the unix philosophy]]></title>
+    <link href="http://beatofthegeek.com/2013/12/yet-another-post-about-unix-philosophy.html"/>
+    <updated>2013-12-22T00:00:00+05:30</updated>
+    <id>http://beatofthegeek.com/2013/12/yet-another-post-about-unix-philosophy</id>
+    <content type="html"><![CDATA[<div class='post'>
+<div dir="ltr" style="text-align: left;" trbidi="on"><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://izquotes.com/quotes-pictures/quote-the-unix-philosophy-basically-involves-giving-you-just-enough-rope-to-hang-yourself-and-then-a-anonymous-293194.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="150" src="http://izquotes.com/quotes-pictures/quote-the-unix-philosophy-basically-involves-giving-you-just-enough-rope-to-hang-yourself-and-then-a-anonymous-293194.jpg" width="320" /></a></div>I have a recently started a minor Linux Users Group with some people in my locality. One question that I've been answering frequently is 'what is this "unix philosophy"?<br />Am writing this post as a quick answer for this question.<br /><br /><b>Some history of the unix philosophy</b><br /><br />Unix philosophy or the unix tools philosophy emerged when the UNIX operating system was created. Or to be more precise, when the pipes '|' were invented. The pipes allow output from one command to be sent to another command as input.<br />e.g <br /><blockquote class="tr_bq">ps -A | grep firefox</blockquote>The output from the ps command, list of all running applications is passed to the 'grep' utility which searches for the line having the word 'firefox', and prints it. Pipes are really handy. Really.<br /><br />The philosophy lead by this invention was to create small tools which would do a particular job&nbsp; instead of creating big programs that do many things.<br />For example tools like grep, or wc. They exist for one and only one task (searching and counting).<br /><br />These small tools could then be used together with the help of pipes to accomplish more complex tasks.<br /><br />It was revolutionary. This philosophy avoided programmers from re-creating small subsystems of their software which could now be replaced by a small tool invented by someone else.<br /><br />So this why <b>the philosophy says</b><br /><blockquote class="tr_bq">'Do one thing, and do it perfectly well'</blockquote></div></div>
+
+]]></content>
+  </entry>
+  
+</feed>

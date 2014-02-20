@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title> My setup for using Emacs as web browser - Beat of The Geek</title>
+  <meta name="author" content="Charanjit Singh">
+
+  
+  <meta name="description" content="This post was actually a part of the last one, but the node was long enough so I broke it into two. Why? Well, why making it one post when I can &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://beatofthegeek.com/2014/02/my-setup-for-using-emacs-as-web-browser.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/beatofthegeek" rel="alternate" title="Beat of The Geek" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic|Istok+Web:400,400italic,700,700italic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46660370-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+  <div id="header-container">
+    <div id="header">
+      <div class="wrapper">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Beat of The Geek</a></h1>
+</hgroup>
+
+</header>
+        <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/beatofthegeek" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:beatofthegeek.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+      </div>
+    </div>
+  </div>
+  <div id="body"   >
+    <div id="main">
+      <div id="content">
+	<div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">My Setup for Using Emacs as Web Browser</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-19T00:00:00+05:30" pubdate data-updated="true">Feb 19<span>th</span>, 2014</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+<div dir="ltr" style="text-align: left;" trbidi="on">This post was actually a part of the <a href="http://www.beatofthegeek.com/2014/02/the-awesome-of-web-browsing-with-emacs.html" target="_blank">last one</a>, but the node was long enough so I broke it into two. Why? Well, why making it one post when I can make them two? To save users a click and a page load (I know some UX) of course, but I also have to convince ever self-criticizing brain that I am justifying with my blog and not slacking off.<br /><br />So here&#8217;s my setup for using Emacs as a web browser. <br /><br /><!-- more --><br /><br /><h3 style="text-align: left;">w3m as web browser</h3><div style="text-align: left;">I use emacs-w3m as for web browsing from inside emacs. It&#8217;s awesome. For using emacs-w3m from inside Emacs, it&#8217;s required to first install <a href="http://w3m.sourceforge.net/" target="_blank">w3m</a>. w3m is actually a text based browser which can be used from command line (like <a href="http://lynx.isc.org/" target="_blank">lynx</a>. So we gotta install it first.&nbsp;</div><div style="text-align: left;"><br /></div><div style="text-align: left;">Depending on your GNU/Linux distribution, run appropriate command to install w3m</div><div style="text-align: left;"><br /></div><blockquote class="tr_bq"><b>Ubuntu</b><br /><i>sudo apt-get install w3m</i><br /><b>Fedora </b><br /><i>sudo yum install w3m</i></blockquote><div style="text-align: left;">I used `pacman -S w3m` (<a href="http://chakra-linux.org/" target="_blank">Chakra</a>). </div><div style="text-align: left;"><br /></div><h3 style="text-align: left;">emacs-w3m in emacs</h3><div style="text-align: left;">Then of course we need emacs-w3m install in emacs. Do `package-install w3m` from within Emacs.</div><div style="text-align: left;"><br /></div><h3 style="text-align: left;">My setup</h3><div style="text-align: left;">Here&#8217;s my setup for customizing web browsing in Emacs. Explanation follows.</div><div style="text-align: left;"></div><div style="text-align: left;"></div><div style="text-align: left;"></div><div style="text-align: left;"><br /></div><div style="text-align: left;"><script src="https://gist.github.com/channikhabra/ab9349d58f052a712a40.js"></script><br /></div><blockquote class="tr_bq">(setq browse-url-browser-function &#8216;w3m-goto-url-new-session)</blockquote><div style="text-align: left;">This line sets Emacs&#8217; default browser for visiting web pages to w3m function w3m-goto-url-new-session.</div><div style="text-align: left;"><br />This would open a new tab (if you want to call that) for the url to be visited.</div><div style="text-align: left;"><br /></div><blockquote class="tr_bq">(setq w3m-user-agent &#8220;Mozilla/5.0 (Linux; U; Android 2.3.3; zh-tw; HTC_Pyramid Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.&#8221;)</blockquote><div style="text-align: left;"><br />This line sets the user-agent string which w3m will use. It really helps to use a mobile user-agent as many sites provide small content centric versions of their websites for mobiles. Most desktop sites in w3m come up with a huge untitled list covering the whole screen.</div><blockquote class="tr_bq">(defun hn ()<br />&nbsp; (interactive)<br />&nbsp; (browse-url &#8220;http://news.ycombinator.com&#8221;))</blockquote><div style="text-align: left;"><br />This creates a quick interactive function for quickly visiting <a href="http://news.ycombinator.com/" target="_blank">hacker news</a> with `M-x &#8220;hn&#8221;`</div><blockquote class="tr_bq">(defun reddit (reddit)<br />&nbsp; &#8220;Opens the REDDIT in w3m-new-session&#8221;<br />&nbsp; (interactive (list<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (read-string &#8220;Enter the reddit (default: psycology): &#8221; nil nil &#8220;psychology&#8221; nil)))<br />&nbsp; (browse-url (format &#8220;http://m.reddit.com/r/%s&#8221; reddit))<br />&nbsp; )</blockquote><div style="text-align: left;"><br />Another function like above for going to reddit. It opens up mobile reddit site with provided subreddit name. This one prompts for entering a reddit name to visit, and if none is provided <a href="http://reddit.com/r/psychology" target="_blank">/r/psychology</a> is visited by default. You can change it to any of the subreddits.</div><blockquote class="tr_bq">(defun wikipedia-search (search-term)<br />&nbsp; &#8220;Search for SEARCH-TERM on wikipedia&#8221;<br />&nbsp; (interactive<br />&nbsp;&nbsp; (let ((term (if mark-active<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (buffer-substring (region-beginning) (region-end))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (word-at-point))))<br />&nbsp;&nbsp;&nbsp;&nbsp; (list<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (read-string<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (format &#8220;Wikipedia (%s):&#8221; term) nil nil term)))<br />&nbsp;&nbsp; )<br />&nbsp; (browse-url<br />&nbsp;&nbsp; (concat<br />&nbsp;&nbsp;&nbsp; &#8220;http://en.m.wikipedia.org/w/index.php?search=&#8221;<br />&nbsp;&nbsp;&nbsp; search-term<br />&nbsp;&nbsp;&nbsp; ))<br />&nbsp; )</blockquote><br /><div style="text-align: left;">As I&#8217;ve told earlier, I am an information maniac. I just need to know everything feasible about everything new I meet. And wikipedia is a nice quick thing for solid information. When called it will prompt for entering a search term, with the word under cursor as default. It then makes a search on Wikipedia for the given search term.</div><div style="text-align: left;"><br />You can set to a keyboard shortcut if you want. I use it with `M-x wik&#8230;` only.</div><div style="text-align: left;"><br /></div><blockquote class="tr_bq">(defun w3m-open-site (site)<br />&nbsp; &#8220;Opens site in new w3m session with &#8216;http://&#8217; appended&#8221;<br />&nbsp; (interactive<br />&nbsp;&nbsp; (list (read-string &#8220;Enter website address(default: w3m-home):&#8221; nil nil w3m-home-page nil )))<br />&nbsp; (w3m-goto-url-new-session<br />&nbsp;&nbsp; (concat &#8220;http://&#8221; site)))</blockquote><div style="text-align: left;"><br /></div><div style="text-align: left;">This adds another extra interactive function &#8216;w3m-open-site. When we enter a url in w3m-goto-url or w3m-goto-url-new-session, it expects full url with &#8216;http://&#8217; in front. So this one just appends &#8216;http://&#8217; in front of a website url you provide.</div><div style="text-align: left;"><br /></div><h3 style="text-align: left;">Some tips</h3><div style="text-align: left;">Here are some extra tips for using emacs-w3m as web browser.</div><h4 style="text-align: left;">Different keyboard shortcuts</h4><div style="text-align: left;">W3m has its own keyboard shortcuts. Here are some I use most</div><div style="text-align: left;"><br /></div><div style="text-align: left;"><b>Navigation</b></div><div style="text-align: left;">We can use standard Emacs controls for moving cursor (C-n, C-p, C-f, C-b) as well as Vim&#8217;s (g,h,j,k). Vim&#8217;s controls are really handy when you need to move cursor with one hand.</div><div style="text-align: left;"><br /><b>Jumping to links</b><br />Tab will go you to next link. `Shift-Tab` to previous</div><div style="text-align: left;"><br /><b>Visiting different tabs</b><br />w3m has tabs like system. You can easily change tabs (buffers) with Emacs&#8217; standard `C-x b` or use `C-n` for next tab and `C-p` for previous tab.</div><div style="text-align: left;"><br /><b>Open link in new tab</b><br />Just entering `G` will do the job. It will prompt for a url with the url under cursor as default.</div><div style="text-align: left;"><br /><b>Open link in same tab/buffer</b><br />`g` works similar to `G` but opens url in current tab only.</div><div style="text-align: left;"><br /><b>Go to previous page</b><br />`B` will act as &#8216;Back&#8217; button of standard browsers</div><div style="text-align: left;"><br /><b>Toggle visibility of image under cursor</b><br />`t` shows or hides an image under cursor</div><div style="text-align: left;"><br /><b>Toggle visibility of all images on page</b><br />`T`</div><div style="text-align: left;"><br /><b>Download url under point</b><br />`d`</div><div style="text-align: left;"><br /><b>Move to next form field</b><br />`]`</div><div style="text-align: left;"><b>Move to previous form field </b><br />`[`</div><div style="text-align: left;"><br />There are so many more I don&#8217;t use. You can check all special shortcuts provided by w3m in the mode help menu. In a w3m buffer, press `C-h m` to access the help buffer.</div><div style="text-align: left;"></div><div style="text-align: left;"><br /></div><h4 style="text-align: left;">Submitting forms</h4><div style="text-align: left;">We sometime need to submit forms, like for google search, or making comment somewhere. You can step in a form by pressing &#8216;Return&#8217; and enter text in minibuffer. The form can then be submitted with &#8216;C-c C-c&#8217;.</div><div style="text-align: left;"><br /></div><h4 style="text-align: left;">Google search</h4><div style="text-align: left;">You can simply use &#8216;w3m-goto-url&#8217; or &#8216;w3m-goto-url-new-session&#8217; for Google search. That&#8217;s the default action. When we enter something which is not a standard url, it will open the Google search for that string with &#8216;feeling lucky&#8217; set.</div><div style="text-align: left;"><br /><h3 style="text-align: left;">w3m-lnum-mode</h3><div style="text-align: left;">Thanks to Ben Chen (from <a href="https://plus.google.com/103163143282947229395/posts/A2GDPQcX68C" target="_blank">G+</a>) for this tip. I didn&#8217;t know about it. Activating w3m-lnum-mode minor mode when web browsing with w3m adds ace-jump-mode like navigation to the buffer. We can just press &#8216;f&#8217; and the all the links and forms on the page become accessible by entering numbers. This can be really handy for quick navigation. Although I think I&#8217;ll stick with <a href="https://github.com/winterTTr/ace-jump-mode" target="_blank">ace-jump-mode</a>.</div><br />That&#8217;s all I can recall at the moment. Please share your views (good or bad) in comments. I&#8217;ll highly appreciate every word from you.</div></div></div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Charanjit Singh</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-19T00:00:00+05:30" pubdate data-updated="true">Feb 19<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/emacs/'>emacs</a>, <a class='category' href='/blog/categories/setup/'>setup</a>, <a class='category' href='/blog/categories/tips/'>tips</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2014/02/some-tips-for-developing-firefox.html" title="Previous Post: Some tips for developing Firefox Extensions in Emacs">&laquo; Some tips for developing Firefox Extensions in Emacs</a>
+      
+      
+        <a class="basic-alignment right" href="/2014/02/the-awesome-of-web-browsing-with-emacs.html" title="Next Post: The awesome of web browsing with Emacs">The awesome of web browsing with Emacs &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/02/the-awesome-of-web-browsing-with-emacs.html">The awesome of web browsing with Emacs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/my-setup-for-using-emacs-as-web-browser.html"> My setup for using Emacs as web browser</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/some-tips-for-developing-firefox.html">Some tips for developing Firefox Extensions in Emacs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/differnet-ways-of-accessing-commit-in.html">Differnet ways of accessing a commit in git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/linux-boot-process-real-quick-walkthrough.html">"To know me better, try walk in my boots", said GNU/Linux</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/git-commit-illustrated-simplicity.html">git commit illustrated: Simplicity revealed by a complex exercise for simplest git task</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/5-cool-things-to-do-with-netcat.html">5 cool things to do with `netcat'</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/5-things-i-frequently-do-and-forget.html">5 things I frequently do and forget with git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/12/yet-another-post-about-unix-philosophy.html">Yet another post about the unix philosophy</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/12/etcpasswd-illustrated.html">/etc/passwd illustrated</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+      </div>
+    </div>
+    <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Charanjit Singh -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a>.</span>
+</p>
+
+</footer>
+    
+
+<script type="text/javascript">
+      var disqus_shortname = 'beatofthegeek';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://beatofthegeek.com/2014/02/my-setup-for-using-emacs-as-web-browser.html';
+        var disqus_url = 'http://beatofthegeek.com/2014/02/my-setup-for-using-emacs-as-web-browser.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</body>
+</html>

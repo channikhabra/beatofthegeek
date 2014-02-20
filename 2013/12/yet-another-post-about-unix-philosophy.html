@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Yet another post about the unix philosophy - Beat of The Geek</title>
+  <meta name="author" content="Charanjit Singh">
+
+  
+  <meta name="description" content="I have a recently started a minor Linux Users Group with some people in my locality. One question that I&#8217;ve been answering frequently is &# &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://beatofthegeek.com/2013/12/yet-another-post-about-unix-philosophy.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/beatofthegeek" rel="alternate" title="Beat of The Geek" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic|Istok+Web:400,400italic,700,700italic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46660370-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+  <div id="header-container">
+    <div id="header">
+      <div class="wrapper">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Beat of The Geek</a></h1>
+</hgroup>
+
+</header>
+        <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/beatofthegeek" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:beatofthegeek.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+      </div>
+    </div>
+  </div>
+  <div id="body"   >
+    <div id="main">
+      <div id="content">
+	<div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Yet Another Post About the Unix Philosophy</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-22T00:00:00+05:30" pubdate data-updated="true">Dec 22<span>nd</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+<div dir="ltr" style="text-align: left;" trbidi="on"><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://izquotes.com/quotes-pictures/quote-the-unix-philosophy-basically-involves-giving-you-just-enough-rope-to-hang-yourself-and-then-a-anonymous-293194.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="150" src="http://izquotes.com/quotes-pictures/quote-the-unix-philosophy-basically-involves-giving-you-just-enough-rope-to-hang-yourself-and-then-a-anonymous-293194.jpg" width="320" /></a></div>I have a recently started a minor Linux Users Group with some people in my locality. One question that I&#8217;ve been answering frequently is &#8216;what is this &#8220;unix philosophy&#8221;?<br />Am writing this post as a quick answer for this question.<br /><br /><b>Some history of the unix philosophy</b><br /><br />Unix philosophy or the unix tools philosophy emerged when the UNIX operating system was created. Or to be more precise, when the pipes &#8216;|&#8217; were invented. The pipes allow output from one command to be sent to another command as input.<br />e.g <br /><blockquote class="tr_bq">ps -A | grep firefox</blockquote>The output from the ps command, list of all running applications is passed to the &#8216;grep&#8217; utility which searches for the line having the word &#8216;firefox&#8217;, and prints it. Pipes are really handy. Really.<br /><br />The philosophy lead by this invention was to create small tools which would do a particular job&nbsp; instead of creating big programs that do many things.<br />For example tools like grep, or wc. They exist for one and only one task (searching and counting).<br /><br />These small tools could then be used together with the help of pipes to accomplish more complex tasks.<br /><br />It was revolutionary. This philosophy avoided programmers from re-creating small subsystems of their software which could now be replaced by a small tool invented by someone else.<br /><br />So this why <b>the philosophy says</b><br /><blockquote class="tr_bq">&#8216;Do one thing, and do it perfectly well&#8217;</blockquote></div></div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Charanjit Singh</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-22T00:00:00+05:30" pubdate data-updated="true">Dec 22<span>nd</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/gnu-slash-linux/'>GNU/Linux</a>, <a class='category' href='/blog/categories/linux-beginners/'>Linux Beginners</a>, <a class='category' href='/blog/categories/philosophy/'>philosophy</a>, <a class='category' href='/blog/categories/quick/'>quick</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/12/etcpasswd-illustrated.html" title="Previous Post: /etc/passwd illustrated">&laquo; /etc/passwd illustrated</a>
+      
+      
+        <a class="basic-alignment right" href="/2014/01/5-things-i-frequently-do-and-forget.html" title="Next Post: 5 things I frequently do and forget with git">5 things I frequently do and forget with git &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/02/the-awesome-of-web-browsing-with-emacs.html">The awesome of web browsing with Emacs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/my-setup-for-using-emacs-as-web-browser.html"> My setup for using Emacs as web browser</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/some-tips-for-developing-firefox.html">Some tips for developing Firefox Extensions in Emacs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/differnet-ways-of-accessing-commit-in.html">Differnet ways of accessing a commit in git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/linux-boot-process-real-quick-walkthrough.html">"To know me better, try walk in my boots", said GNU/Linux</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/git-commit-illustrated-simplicity.html">git commit illustrated: Simplicity revealed by a complex exercise for simplest git task</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/5-cool-things-to-do-with-netcat.html">5 cool things to do with `netcat'</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/5-things-i-frequently-do-and-forget.html">5 things I frequently do and forget with git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/12/yet-another-post-about-unix-philosophy.html">Yet another post about the unix philosophy</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/12/etcpasswd-illustrated.html">/etc/passwd illustrated</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+      </div>
+    </div>
+    <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Charanjit Singh -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a>.</span>
+</p>
+
+</footer>
+    
+
+<script type="text/javascript">
+      var disqus_shortname = 'beatofthegeek';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://beatofthegeek.com/2013/12/yet-another-post-about-unix-philosophy.html';
+        var disqus_url = 'http://beatofthegeek.com/2013/12/yet-another-post-about-unix-philosophy.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</body>
+</html>

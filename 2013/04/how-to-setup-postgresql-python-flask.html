@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How to setup postgresql (python-flask) app on Heroku and local machine - Beat of The Geek</title>
+  <meta name="author" content="Charanjit Singh">
+
+  
+  <meta name="description" content="So I was like setting up a python web app on Heroku cloud platform and it was awesome. You don&#8217;t need to break a sweat to deploy something &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://beatofthegeek.com/2013/04/how-to-setup-postgresql-python-flask.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/beatofthegeek" rel="alternate" title="Beat of The Geek" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic|Istok+Web:400,400italic,700,700italic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46660370-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+  <div id="header-container">
+    <div id="header">
+      <div class="wrapper">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Beat of The Geek</a></h1>
+</hgroup>
+
+</header>
+        <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/beatofthegeek" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:beatofthegeek.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+      </div>
+    </div>
+  </div>
+  <div id="body"   >
+    <div id="main">
+      <div id="content">
+	<div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How to Setup Postgresql (Python-flask) App on Heroku and Local Machine</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-30T00:00:00+05:30" pubdate data-updated="true">Apr 30<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+<a href="http://b.vimeocdn.com/ps/245/288/2452886_300.jpg" imageanchor="1" style="clear: right; float: right; margin-bottom: 1em; margin-left: 1em;"><img border="0" src="http://b.vimeocdn.com/ps/245/288/2452886_300.jpg" /></a>So I was like setting up a python web app on Heroku cloud platform and it was awesome. You don&#8217;t need to break a sweat to deploy something like a ROR app but things are different when it come to micro-frameworks like Python-flask.<br />I chose flask for the beauty and simplicity, and because I wanted to do everything myself. The app has postgres-sql as it&#8217;s database backend. Deploying apps on Heroku is easy and all but there are some things which are not that easy to find in official docs and tutorials. <br />So here we shall proceed with setting up postgres (with Python) on Heroku.<br /><!-- more --><br /><h3>Install flask-sqlalchemy and psycopg2</h3>Since we are using python we need these libraries for accessing the services. flask-sqlalchemy is a flask extension for the infamous sqlalchemy library and we need psychopg2 to interact with the postgres itself.<br />If you are using other language the you obviously need to use relative tools.<br />Above libraries can be installed with<br /><blockquote class="tr_bq"><i>pip install flask-sqlalchemy psychopg2</i></blockquote>on your local setup. Then do <br /><blockquote class="tr_bq"><i>pip freeze &gt; requirements.txt</i></blockquote>This will put the newly installed libraries in requirements.txt file so they will get automagically installed on your Heroku instance when you push the code.<br /><br /><h4>Might need to install this on local machine to compile psycopg2</h4><blockquote class="tr_bq"><i>python-dev</i></blockquote>Before installing <i>psycopg2</i> on your local setup, you should install python-dev tools on your local linux box.<br /><br /><h3>Add heroku postgres-dev addon (it provide 10k rows for free)</h3>Heroku provides the database service as an addon to the standard platform. So we need to add the addon to our setup to use postgres.<br /><br />Run this command on your local terminal (obviously you need to have heroku-belt installed)<br /><br /><blockquote class="tr_bq"><i>heroku addons:add heroku-postgresql:dev</i></blockquote><br /><h3>After this the database is setup, now promote it to $DATABASE_URL</h3>Database is now setup. But remember how we access the database on non-cloud (traditional they call it) services? Yes, we need the url to access database (it&#8217;s something like &#8221;<i>postgresql://pguser:password/dbname</i>&#8221;). Heroku creates an environment variable with a color name (you will see it when you add the addon).<br />We need to use heroku-belt&#8217;s <i>pg:promote</i> command to enable $DATABASE_URL environment variable.<br /><blockquote class="tr_bq"><i>heroku pg:promote HEROKU_POSTGRESQL_COLOR</i></blockquote><h3>Now set <i>SQLALCHEMY_DATABASE_URI</i> in flask app </h3>Now we have the database URI. We need to access it in the database. We can do this by simply accessing the $DATABASE_URL environment variable. This is how to do it with a flask app.<br /><blockquote class="tr_bq"><i>SQLALCHEMY_DATABASE_URI = os.environ.get(&#8220;DATABASE_URL&#8221;,&#8221;postgresql://pguser:password/dbname&#8221;)</i></blockquote><br />This has an extra hack for accessing the local database. It loads heroku database url in heroku and local url in local dev environment. You obviously need to modify it with your local setup.<br />Another way to use local database is to export the local database URI to the shell environment. Put this line in your <i>.zshrc</i> or <i>.bash_profile</i> (depending on the shell you are using)<br /><blockquote class="tr_bq"><i>export DATABASE_URI=&#8221;postgresql://pguser:password/dbname&#8221;</i></blockquote><h3>Create the postgres database on heroku </h3>Here&#8217;s the python flask specific stuff now. In flask, unless you are using something like &#8217;<i>alembic</i>&#8217; for database migrations, you can directly create your database on Heroku. <br /><br />Just run python console attached to your Heroku instance<br /><blockquote class="tr_bq"><i>heroku run python</i></blockquote>Then do import your flask-sqlalchemy instance and create the database with<br /><blockquote class="tr_bq"><i>&gt;&gt;&gt;</i> <i>db.create_all</i></blockquote>assuming that &#8216;db&#8217; is the flask-sqlalchemy instance.<br /><br /><br />So here we are with our heroku app ready to rock the postgres.<br /><br /><i>(Phewww&#8230;I eventually managed to write a post after so long. Such relief.)</i><br /><div style="text-align: justify;"><br /><br /><hr /><br /><b><i>Circle Beat Of The Geek on</i></b> <a href="https://plus.google.com/109838896781876000861" target="_blank">Google Plus</a><br /><i><b>OR Like us on</b></i> <a href="https://www.facebook.com/pages/Beat-Of-The-Geek/251813454834549" target="_blank">Facebook</a> <b><i>&nbsp;OR Follow on</i></b> <a href="https://twitter.com/#!/beatofthegeek" target="_blank">Twitter</a></div></div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Charanjit Singh</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-30T00:00:00+05:30" pubdate data-updated="true">Apr 30<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/gnu-slash-linux/'>GNU/Linux</a>, <a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/heroku/'>heroku</a>, <a class='category' href='/blog/categories/postgresql/'>postgresql</a>, <a class='category' href='/blog/categories/python/'>python</a>, <a class='category' href='/blog/categories/python-flask/'>python-flask</a>, <a class='category' href='/blog/categories/web-development/'>web development</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2012/07/setting-up-your-own-lamp-machine-for.html" title="Previous Post: Setting up your own LAMP machine for PHP development -Setting MySql and PHP">&laquo; Setting up your own LAMP machine for PHP development -Setting MySql and PHP</a>
+      
+      
+        <a class="basic-alignment right" href="/2013/05/how-to-install-software-in-linux.html" title="Next Post: How to install software in Linux without using any package manager">How to install software in Linux without using any package manager &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/02/the-awesome-of-web-browsing-with-emacs.html">The awesome of web browsing with Emacs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/my-setup-for-using-emacs-as-web-browser.html"> My setup for using Emacs as web browser</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/some-tips-for-developing-firefox.html">Some tips for developing Firefox Extensions in Emacs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/differnet-ways-of-accessing-commit-in.html">Differnet ways of accessing a commit in git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/linux-boot-process-real-quick-walkthrough.html">"To know me better, try walk in my boots", said GNU/Linux</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/git-commit-illustrated-simplicity.html">git commit illustrated: Simplicity revealed by a complex exercise for simplest git task</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/5-cool-things-to-do-with-netcat.html">5 cool things to do with `netcat'</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/5-things-i-frequently-do-and-forget.html">5 things I frequently do and forget with git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/12/yet-another-post-about-unix-philosophy.html">Yet another post about the unix philosophy</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/12/etcpasswd-illustrated.html">/etc/passwd illustrated</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+      </div>
+    </div>
+    <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Charanjit Singh -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a>.</span>
+</p>
+
+</footer>
+    
+
+<script type="text/javascript">
+      var disqus_shortname = 'beatofthegeek';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://beatofthegeek.com/2013/04/how-to-setup-postgresql-python-flask.html';
+        var disqus_url = 'http://beatofthegeek.com/2013/04/how-to-setup-postgresql-python-flask.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</body>
+</html>

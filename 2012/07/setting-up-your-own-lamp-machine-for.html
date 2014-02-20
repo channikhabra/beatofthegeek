@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Setting up your own LAMP machine for PHP development -Setting MySql and PHP - Beat of The Geek</title>
+  <meta name="author" content="Charanjit Singh">
+
+  
+  <meta name="description" content="&lt;&lt; Previous:&nbsp;Setting up ApacheWell, after setting up the apache http daemon, it&#8217;s time for the database management system, the &# &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://beatofthegeek.com/2012/07/setting-up-your-own-lamp-machine-for.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/beatofthegeek" rel="alternate" title="Beat of The Geek" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic|Istok+Web:400,400italic,700,700italic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46660370-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+  <div id="header-container">
+    <div id="header">
+      <div class="wrapper">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Beat of The Geek</a></h1>
+</hgroup>
+
+</header>
+        <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/beatofthegeek" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:beatofthegeek.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+      </div>
+    </div>
+  </div>
+  <div id="body"   >
+    <div id="main">
+      <div id="content">
+	<div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Setting Up Your Own LAMP Machine for PHP Development -Setting MySql and PHP</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-01T00:00:00+05:30" pubdate data-updated="true">Jul 1<span>st</span>, 2012</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+<div dir="ltr" style="text-align: left;" trbidi="on">&lt;&lt; Previous:&nbsp;<a href="http://channikhabra.blogspot.in/2012/06/setting-up-you-own-home-lamp-machine.html" target="">Setting up Apache</a><br /><br />Well, after setting up the apache http daemon, it&#8217;s time for the database management system, the &#8216;M&#8217; of LAMP.<br /><h3 style="text-align: left;">   </h3><h3 style="text-align: left;">    Installing MySql</h3>It can&#8217;t be easier. Just shoot the terminal and type:<br /><blockquote class="tr_bq"><code>sudo apt-get install mysql-server</code></blockquote>Yup! That&#8217;s it. You&#8217;ll get some prompts and will be asked to enter the password for root user (root user of MySql not the Operating System). Just enter the details and that&#8217;s all for the MySql.<br /><h4 style="text-align: left;">    Removing Mysql from Startup</h4>Yeah, just like Apache daemon, mysql put itself on startup too. And it will not get removed by just running update-rc.d. We need to comment out a couple lines in the mysql.conf file. So, shoot the terminal and do this.<br /><br /><!-- more --><br /><br /><ul style="text-align: left;"><li><span style="background-color: white;"><code>sudo kate (or gedit) /etc/init/mysql.conf</code></span></li><li><span style="background-color: white;">Comment out the two starting lines (they should say &#8220;start on&#8221; and something)</span></li></ul><div>That&#8217;s it. MySql is now removed from the startup. To run the Mysql daemon after this, use following command</div><blockquote class="tr_bq"><code>sudo service mysql start</code></blockquote><br /><br /><h3 style="text-align: left;">    Installing PHP5</h3>After we&#8217;ve set Apache and MySql, it is time for the real sexy. Although PHP can be installed via Ubuntu packages with <i>apt-get install php5</i>, but it will install php5.3(.something). That&#8217;s no good as we wanna use the latest version. Remember I told you about the inbuilt server provided with php that almost eliminates the need for the Apache server in development environment? It come with PHP5.4 and is not available in PHP5.3. Beside that there are many more <a href="http://php.net/releases/5_4_0.php" target="_blank">awesome features</a> which make it worth installing. So let&#8217;s install the latest version of PHP.<br /><h3 style="text-align: left;">    Installing Latest PHP in Ubuntu</h3>Shoot the terminal and enter following commands:<br /><blockquote class="tr_bq"><code>sudo add-apt-repository ppa:ondrej/php5</code></blockquote>And then update apt-get repository info and install apache php mod, php5 itself and php mysql extension to use mysql with php.<br /><blockquote class="tr_bq"><code>sudo apt-get update<br />sudo apt-get install php5 libapache2-mod-php5 php5-mysql</code></blockquote><h4 style="text-align: left;">    <span style="background-color: white;">Running PHP server (not Apache)</span></h4>To run the php server instead of Apache, just run following command in terminal.<br /><blockquote class="tr_bq"><code>php -S localhost:8080</code></blockquote>This will run a server listening at port 8080. So, we&#8217;ll need to go to <a href="http://localhost:8080/">http://localhost:8080</a>&nbsp;to run the server. In order to run the server as simply <a href="http://localhost/">http://localhost</a>, we&#8217;ll need to run the server at port 80, and for that we need to run the above command with sudo and 80 instead of 8080. Here&#8217;s what I mean:<br /><blockquote class="tr_bq"><code>sudo php -S localhost:80</code></blockquote><h3 style="text-align: left;">    <span style="background-color: white;">Benefits of using PHP Server</span></h3><br /><ul style="text-align: left;"><li><span style="background-color: white;">PHP server run as the current working directory as the root server dir. So there is no need to go through the hassle of creating different sites in apache.</span></li><li><span style="background-color: white;">Running php server helps a lot in debugging by displaying all the messages, errors and warnings in the terminal itself. So no need to change php.ini to enable debugging or use some other method.&nbsp;</span></li><li><span style="background-color: white;">It is really cool to use it (don&#8217;t know why, but I feel like it is cool :P)</span></li></ul><div>Here&#8217;s a snapshot of how it look when running php server.<br /><br /><br /></div><div><span id="goog_2392878"></span><span id="goog_2392879"></span></div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-_raAYxZsmQI/T_Ad5Kwo0CI/AAAAAAAAAQk/gUaZ2-1J7ho/s1600/snapshot1.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="205" src="http://2.bp.blogspot.com/-_raAYxZsmQI/T_Ad5Kwo0CI/AAAAAAAAAQk/gUaZ2-1J7ho/s400/snapshot1.png" width="400" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"></div><br /></div></div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Charanjit Singh</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-01T00:00:00+05:30" pubdate data-updated="true">Jul 1<span>st</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/gnu-slash-linux/'>GNU/Linux</a>, <a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/linux-beginners/'>Linux Beginners</a>, <a class='category' href='/blog/categories/ubuntu/'>Ubuntu</a>, <a class='category' href='/blog/categories/web-development/'>web development</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2012/06/setting-up-you-own-home-lamp-machine.html" title="Previous Post: Setting up your own home LAMP machine for PHP development -Setting Apache">&laquo; Setting up your own home LAMP machine for PHP development -Setting Apache</a>
+      
+      
+        <a class="basic-alignment right" href="/2013/04/how-to-setup-postgresql-python-flask.html" title="Next Post: How to setup postgresql (python-flask) app on Heroku and local machine">How to setup postgresql (python-flask) app on Heroku and local machine &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/02/the-awesome-of-web-browsing-with-emacs.html">The awesome of web browsing with Emacs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/my-setup-for-using-emacs-as-web-browser.html"> My setup for using Emacs as web browser</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/some-tips-for-developing-firefox.html">Some tips for developing Firefox Extensions in Emacs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/differnet-ways-of-accessing-commit-in.html">Differnet ways of accessing a commit in git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/linux-boot-process-real-quick-walkthrough.html">"To know me better, try walk in my boots", said GNU/Linux</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/git-commit-illustrated-simplicity.html">git commit illustrated: Simplicity revealed by a complex exercise for simplest git task</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/5-cool-things-to-do-with-netcat.html">5 cool things to do with `netcat'</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/5-things-i-frequently-do-and-forget.html">5 things I frequently do and forget with git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/12/yet-another-post-about-unix-philosophy.html">Yet another post about the unix philosophy</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/12/etcpasswd-illustrated.html">/etc/passwd illustrated</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+      </div>
+    </div>
+    <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Charanjit Singh -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a>.</span>
+</p>
+
+</footer>
+    
+
+<script type="text/javascript">
+      var disqus_shortname = 'beatofthegeek';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://beatofthegeek.com/2012/07/setting-up-your-own-lamp-machine-for.html';
+        var disqus_url = 'http://beatofthegeek.com/2012/07/setting-up-your-own-lamp-machine-for.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</body>
+</html>

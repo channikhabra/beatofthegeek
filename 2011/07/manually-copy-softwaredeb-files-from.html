@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Manually copy software(.deb files) from apt-get archives for future installs/backup - Beat of The Geek</title>
+  <meta name="author" content="Charanjit Singh">
+
+  
+  <meta name="description" content="Only for Debian based distros; Ubuntu, Mint etc.It is easy (and yes, possible as well) to copy software which are installed using apt-get\aptitude\ &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://beatofthegeek.com/2011/07/manually-copy-softwaredeb-files-from.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/beatofthegeek" rel="alternate" title="Beat of The Geek" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic|Istok+Web:400,400italic,700,700italic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46660370-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+  <div id="header-container">
+    <div id="header">
+      <div class="wrapper">
+        <header role="banner"><hgroup>
+  <h1><a href="/">Beat of The Geek</a></h1>
+</hgroup>
+
+</header>
+        <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/beatofthegeek" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:beatofthegeek.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+      </div>
+    </div>
+  </div>
+  <div id="body"   >
+    <div id="main">
+      <div id="content">
+	<div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Manually Copy software(.deb Files) From Apt-get Archives for Future Installs/backup</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-08T00:00:00+05:30" pubdate data-updated="true">Jul 8<span>th</span>, 2011</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+<div dir="ltr" style="text-align: left;" trbidi="on"><div style="text-align: left;"><div><h1><span class="Apple-style-span" style="font-size: small; font-weight: normal;"><em>Only for Debian based distros; Ubuntu, Mint etc.</em></span></h1><h1><span class="Apple-style-span" style="font-size: small; font-weight: normal;">It is easy (and yes, possible as well) to copy software which are installed using apt-get\aptitude\synaptic etc. and save them for future install on other computer or just for backup. For this do the following:</span></h1><ul style="text-align: left;"><li>You need to be root to copy files from archives, so start a root session of nautilus<i>.</i>&nbsp;Open the terminal and type<br /><span class="Apple-style-span"><code></code></span><code><span class="Apple-style-span" style="color: #274e13;">sudo nautilus</span>&nbsp;</code><br />and then enter password when prompted.</li><li>A nautilus window will open up (don&#8217;t panic. it is just your file manager). Navigate to /var/cache/apt/archives/<!-- more --></li><li>Here saved are all the files which are installed using apt-get or another package manager which use apt-get at back (aptitude, synaptic). Locate the software you are interested in (.deb files).</li><li>Copy .deb files on a USB or any other place and carry them to offline computer.</li><li><span class="Apple-style-span" style="color: #990000;">I highly recommend to <b>copy all the .deb files available in &#8230;/archives directory </b>even if you don&#8217;t need them since every software depend on a lot of dependencies which are difficult to locate manually.</span></li><li>On the offline machine, again open the root session of nautilus (<code>sudo nautilus</code>).</li></ul></div><div style="text-align: left;"><span class="Apple-style-span" style="color: #6aa84f;"><span class="Apple-style-span" style="font-size: large;">Installing on Offline Machine&nbsp;</span><span class="Apple-style-span" style="font-size: large;">»</span></span><br /><span class="Apple-style-span" style="color: #660000; font-size: large;">Can be done this way</span><span class="Apple-style-span" style="font-size: large;"> <span class="Apple-style-span" style="color: red;">»</span></span></div><ul style="text-align: left;"><li>Copy and paste all the .deb files from USB stick (or whatever media you used) to /var/cache/apt/archives/ directory (you need to use &#8216;sudo nautilus&#8217; for this).</li><li>When everything is done, close nautilus.</li><li>In the Terminal window (ctrl+T), type<br /><code>sudo apt-get install "your package name"</code></li><li>Apt-get look for a package in archives first and try to download it only if it is not present there. So in any case, this method must work perfectly.</li></ul><a href="http://www.blogger.com/post-edit.g?blogID=3664370465667971076&amp;postID=3082173511827674230" name="Synaptic"></a><br /><span class="Apple-style-span" style="color: #274e13; font-size: large;">Recommended way:</span><span class="Apple-style-span" style="color: #6aa84f; font-size: large;"> »</span></div><div style="text-align: left;"><ul style="text-align: left;"><li>Copy all files from USB stick to hard drive (not necessary).</li><li>Open <b>Synaptic package manager</b> (inbuilt in Ubuntu).</li><li>Select &#8220;Add Downloaded software&#8221; from File menu.</li><li>Navigate to location where you copied your software (or USB/CD containing it).</li><li>Synaptic will install them without any problem</li></ul></div><div style="text-align: left;"><ul style="text-align: left;"></ul><span class="Apple-style-span" style="color: #990000;">Precautions:</span></div><div style="text-align: left;"><ul style="text-align: left;"><a href="http://4.bp.blogspot.com/-om7W-momaps/ThMWBcYhlBI/AAAAAAAAAB8/HhnTQlIQ3cI/s1600/Screenshot.png" imageanchor="1" style="clear: right; float: right; margin-bottom: 1em; margin-left: 1em;"><img border="0" height="257" src="http://4.bp.blogspot.com/-om7W-momaps/ThMWBcYhlBI/AAAAAAAAAB8/HhnTQlIQ3cI/s320/Screenshot.png" width="320" /></a><li>Take care that the architectures of both the computers involved in this process are same i.e. both run either 32 bit or 64 bit versions of the OS.</li><li>When running nautilus with root privileges, take care that you don&#8217;t delete or change anything just because your genius mind think it is useless.</li><li>It is&nbsp;recommended&nbsp;that both the computer run same version of OS, it is not necessary though.</li></ul>Although it is possible to transfer software with this method, but it involves a lot of manual work. If you are a lazy junk (like me :P ), software like Aptoncd are available to automate this process and they do it very well.<br /><br /><hr \="" style="text-align: justify;" /><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><b><i>Circle Beat Of The Geek on</i></b>&nbsp;<a href="https://plus.google.com/109838896781876000861" target="_blank">Google Plus</a></div><div style="text-align: justify;"><i><b>OR Like us on</b></i>&nbsp;<a href="https://www.facebook.com/pages/Beat-Of-The-Geek/251813454834549" target="_blank">Facebook</a>&nbsp;<b><i>&nbsp;OR Follow on</i></b>&nbsp;<a href="https://twitter.com/#!/beatofthegeek" target="_blank">Twitter</a></div></div></div></div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Charanjit Singh</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-08T00:00:00+05:30" pubdate data-updated="true">Jul 8<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/gnu-slash-linux/'>GNU/Linux</a>, <a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/mint/'>Mint</a>, <a class='category' href='/blog/categories/ubuntu/'>Ubuntu</a>, <a class='category' href='/blog/categories/apt-get/'>apt-get</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2011/07/why-not-to-install-linux-offline-and.html" title="Previous Post: How to use Linux:Problems you'll face using Linux offline and Solutions">&laquo; How to use Linux:Problems you'll face using Linux offline and Solutions</a>
+      
+      
+        <a class="basic-alignment right" href="/2011/07/aptoncd-tutorialhow-to-backup-your.html" title="Next Post: Aptoncd Tutorial:How to backup your installed software on Ubuntu using Aptoncd">Aptoncd Tutorial:How to backup your installed software on Ubuntu using Aptoncd &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/02/the-awesome-of-web-browsing-with-emacs.html">The awesome of web browsing with Emacs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/my-setup-for-using-emacs-as-web-browser.html"> My setup for using Emacs as web browser</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/some-tips-for-developing-firefox.html">Some tips for developing Firefox Extensions in Emacs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/differnet-ways-of-accessing-commit-in.html">Differnet ways of accessing a commit in git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/linux-boot-process-real-quick-walkthrough.html">"To know me better, try walk in my boots", said GNU/Linux</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/git-commit-illustrated-simplicity.html">git commit illustrated: Simplicity revealed by a complex exercise for simplest git task</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/5-cool-things-to-do-with-netcat.html">5 cool things to do with `netcat'</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/01/5-things-i-frequently-do-and-forget.html">5 things I frequently do and forget with git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/12/yet-another-post-about-unix-philosophy.html">Yet another post about the unix philosophy</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/12/etcpasswd-illustrated.html">/etc/passwd illustrated</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+      </div>
+    </div>
+    <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Charanjit Singh -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a>.</span>
+</p>
+
+</footer>
+    
+
+<script type="text/javascript">
+      var disqus_shortname = 'beatofthegeek';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://beatofthegeek.com/2011/07/manually-copy-softwaredeb-files-from.html';
+        var disqus_url = 'http://beatofthegeek.com/2011/07/manually-copy-softwaredeb-files-from.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</body>
+</html>
