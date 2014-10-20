@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: non-technical | Beat of The Geek]]></title>
+  <link href="http://\.github.io/\/github/blog/categories/non-technical/atom.xml" rel="self"/>
+  <link href="http://\.github.io/\/github/"/>
+  <updated>2014-10-20T10:06:05+05:30</updated>
+  <id>http://\.github.io/\/github/</id>
+  <author>
+    <name><![CDATA[Charanjit Singh]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[`quickie` and `loud mouth`]]></title>
+    <link href="http://\.github.io/\/github/2014/10/quickies-and-loud-mouth.html"/>
+    <updated>2014-10-20T09:39:00+05:30</updated>
+    <id>http://\.github.io/\/github/2014/10/quickies-and-loud-mouth</id>
+    <content type="html"><![CDATA[<blockquote><p>I've started two new categories. <code>loud mouth</code> and <code>quickie</code>. I am doing a new experiment of writing a blog post of every new or old (which I haven't documented) I do while I am working on some project. <code>loud mouth</code> is for that. But I don't always like to explain things deep. For those times I am starting <code>quickie</code>, which represents posts which just get stuff done, without explaining much; basically just a dump of the steps I took to solve something. Here's first post that belongs to both these categories.</p></blockquote>
+
+<!-- more -->
+
+
+<p>I don't remember how many times I had to re-solve already solved problems because I couldn't find a resource on Internet about the solution. Not that Internet lacks information, but it lacks information which few people care about. Like a particular bug which occurs for few and majority of Internet (thankfully including the mighty trolls) don't care about.</p>
+
+<p>I read some (more than one) blog posts about how and why every developer should blog about their findings/solutions and what not. Lately, I found myself thinking the same. If only someone whom I met on IRC (after spending an hour on Google) would have documented the solution he told me, hopefully Google (or duckduckgo or whatever) would've found it for me and I would've got the solution and if lucky, hard earned experience notes from the developer too.</p>
+
+<p>So I decided I'd be that guy who document his solutions/findings. I will try to do that here in this blog.</p>
+
+<p>I started this blog when I was first introduced to Internet, before I actually had Internet at my home. Initially I was super excited and wrote many posts (10 may be), but then the excitement faded off. Playing with code is more intriguing then writing about it. I tried to resurrect this blog many times (2 I think), but couldn't. So no promises here. I will try my best to document as much as I can.</p>
+
+<p>Here's the first post I wrote under both these categories: <a href="http://beatofthegeek.com/2014/10/how-to-find-which-application-is-running-on-a-particular-port.html">Find Which Application Is Running on a Particular Port</a></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: quickie | Beat of The Geek]]></title>
   <link href="http://\.github.io/\/github/blog/categories/quickie/atom.xml" rel="self"/>
   <link href="http://\.github.io/\/github/"/>
-  <updated>2014-10-20T09:28:08+05:30</updated>
+  <updated>2014-10-20T10:06:05+05:30</updated>
   <id>http://\.github.io/\/github/</id>
   <author>
     <name><![CDATA[Charanjit Singh]]></name>
@@ -18,12 +18,10 @@
     <link href="http://\.github.io/\/github/2014/10/how-to-find-which-application-is-running-on-a-particular-port.html"/>
     <updated>2014-10-14T18:45:00+05:30</updated>
     <id>http://\.github.io/\/github/2014/10/how-to-find-which-application-is-running-on-a-particular-port</id>
-    <content type="html"><![CDATA[<blockquote><p>I've started two new categories. <code>loud mouth</code> and <code>quickie</code>. I am doing a new experiment of writing a blog post of every new or old (which I haven't documented) I do while I am working on some project. <code>loud mouth</code> is for that. But I don't always like to explain things deep. For those times I am starting <code>quickie</code>, which represents posts which just get stuff done, without explaining much; basically just a dump of the steps I took to solve something. Here's first post that belongs to both these categories.</p></blockquote>
+    <content type="html"><![CDATA[<blockquote><p>I tried a <a href="http://dutzi.github.io/tamper/">Chrome extension</a> I ran into on reddit. It runs mitm proxy behind the screen. Then at an occasion, I had to run a proxy for my work purposes, but I found port 8080 is already taken. It turned out tamper keep mitm proxy running even when it's disabled (not the extension but through the switch given in tamper). This is how I found out which application was using port 8080.</p></blockquote>
 
 <!-- more -->
 
-
-<p>I tried a <a href="http://dutzi.github.io/tamper/">Chrome extension</a> I ran into on reddit. It runs mitm proxy behind the screen. Then at an occasion, I had to run a proxy for my work purposes, but I found port 8080 is already taken. It turned out tamper keep mitm proxy running even when it's disabled (not the extension but through the switch given in tamper). This is how I found out which application was using port 8080.</p>
 
 <h2>Use lsof</h2>
 
