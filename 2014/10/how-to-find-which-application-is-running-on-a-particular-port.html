@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Yet another post about the unix philosophy - Beat of The Geek</title>
+  <title>Find which application is running on a particular port - Beat of The Geek</title>
   <meta name="author" content="Charanjit Singh">
 
   
-  <meta name="description" content="I have a recently started a minor Linux Users Group with some people in my locality. One question that I&#8217;ve been answering frequently is &# &hellip;">
+  <meta name="description" content="I&#8217;ve started two new categories. loud mouth and quickie. I am doing a new experiment of writing a blog post of every new or old (which I haven &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://\.github.io/\/github/2013/12/yet-another-post-about-unix-philosophy.html">
+  <link rel="canonical" href="http://\.github.io/\/github/2014/10/how-to-find-which-application-is-running-on-a-particular-port.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -83,7 +83,7 @@
   
   <header>
     
-      <h1 class="entry-title">Yet Another Post About the Unix Philosophy</h1>
+      <h1 class="entry-title">Find Which Application Is Running on a Particular Port</h1>
     
     
       <p class="meta">
@@ -99,7 +99,7 @@
   
 
 
-<time datetime="2013-12-22T00:00:00+05:30" pubdate data-updated="true">Dec 22<span>nd</span>, 2013</time>
+<time datetime="2014-10-14T18:45:00+05:30" pubdate data-updated="true">Oct 14<span>th</span>, 2014</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -108,8 +108,53 @@
   </header>
 
 
-<div class="entry-content"><div class='post'>
-<div dir="ltr" style="text-align: left;" trbidi="on"><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://izquotes.com/quotes-pictures/quote-the-unix-philosophy-basically-involves-giving-you-just-enough-rope-to-hang-yourself-and-then-a-anonymous-293194.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="150" src="http://izquotes.com/quotes-pictures/quote-the-unix-philosophy-basically-involves-giving-you-just-enough-rope-to-hang-yourself-and-then-a-anonymous-293194.jpg" width="320" /></a></div>I have a recently started a minor Linux Users Group with some people in my locality. One question that I&#8217;ve been answering frequently is &#8216;what is this &#8220;unix philosophy&#8221;?<br />Am writing this post as a quick answer for this question.<br /><br /><b>Some history of the unix philosophy</b><br /><br />Unix philosophy or the unix tools philosophy emerged when the UNIX operating system was created. Or to be more precise, when the pipes &#8216;|&#8217; were invented. The pipes allow output from one command to be sent to another command as input.<br />e.g <br /><blockquote class="tr_bq">ps -A | grep firefox</blockquote>The output from the ps command, list of all running applications is passed to the &#8216;grep&#8217; utility which searches for the line having the word &#8216;firefox&#8217;, and prints it. Pipes are really handy. Really.<br /><br />The philosophy lead by this invention was to create small tools which would do a particular job&nbsp; instead of creating big programs that do many things.<br />For example tools like grep, or wc. They exist for one and only one task (searching and counting).<br /><br />These small tools could then be used together with the help of pipes to accomplish more complex tasks.<br /><br />It was revolutionary. This philosophy avoided programmers from re-creating small subsystems of their software which could now be replaced by a small tool invented by someone else.<br /><br />So this why <b>the philosophy says</b><br /><blockquote class="tr_bq">&#8216;Do one thing, and do it perfectly well&#8217;</blockquote></div></div>
+<div class="entry-content"><blockquote><p>I&#8217;ve started two new categories. <code>loud mouth</code> and <code>quickie</code>. I am doing a new experiment of writing a blog post of every new or old (which I haven&#8217;t documented) I do while I am working on some project. <code>loud mouth</code> is for that. But I don&#8217;t always like to explain things deep. For those times I am starting <code>quickie</code>, which represents posts which just get stuff done, without explaining much; basically just a dump of the steps I took to solve something. Here&#8217;s first post that belongs to both these categories.</p></blockquote>
+
+<!-- more -->
+
+
+<p>I tried a <a href="http://dutzi.github.io/tamper/">Chrome extension</a> I ran into on reddit. It runs mitm proxy behind the screen. Then at an occasion, I had to run a proxy for my work purposes, but I found port 8080 is already taken. It turned out tamper keep mitm proxy running even when it&#8217;s disabled (not the extension but through the switch given in tamper). This is how I found out which application was using port 8080.</p>
+
+<h2>Use lsof</h2>
+
+<p><code>lsof</code> can be used to check which process owns a particular port</p>
+
+<p><code>lsof -S -i &lt;protocol&gt;:&lt;port&gt;</code> tells which process has the port assigned to it</p>
+
+<p>For example,For example,</p>
+
+<p><code>
+lsof -i TCP:8080 -S   
+</code></p>
+
+<p>Running above command shows output like this:</p>
+
+<p><code>
+Python  15125 channi    3u  IPv4 0xb1b0493c89f7e78f      0t0  TCP *:http-alt (LISTEN)   
+</code></p>
+
+<p>Now in next step we can use <code>ps</code> to identify how the Python process with pid <code>15125</code> was started</p>
+
+<h2>Use <code>ps</code></h2>
+
+<p><code>ps</code> can be used to know the command with which the process was executed</p>
+
+<p>From the <code>lsof</code> command we got the pid of the process which owns port 8080. Now we want to know how that process was started so we can have a better idea about the intention of the process.</p>
+
+<p>On Mac OS, we use <code>ps -A | grep 15125</code> for getting that, same command on Linux is <code>ps -aux | grep 15125</code>. <code>15125</code> is the pid of the process we got in previous step using <code>lsof</code></p>
+
+<p>Using <code>ps -A | grep 15125</code> give us this output on OS X:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>15125 ??         0:59.99 /usr/local/Cellar/python/2.7.8_1/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python /usr/local/bin/tamper.py chrome-extension://mabhojhgigkmnkppkncbkblecnnanfmd/
+</span><span class='line'>25777 ttys002    0:00.00 grep 15125
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So now we see the process is started by <code>tamper.py</code> python script which is using <code>Tamper</code> chrome extension.</p>
+
+<p>Tamper is a chrome extension that uses mitm proxy to allow us tamper HTTP(S) requests. So this is not apparently a security breach.</p>
 </div>
 
 
@@ -132,12 +177,12 @@
   
 
 
-<time datetime="2013-12-22T00:00:00+05:30" pubdate data-updated="true">Dec 22<span>nd</span>, 2013</time>
+<time datetime="2014-10-14T18:45:00+05:30" pubdate data-updated="true">Oct 14<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/gnu-slash-linux/'>GNU/Linux</a>, <a class='category' href='/blog/categories/linux-beginners/'>Linux Beginners</a>, <a class='category' href='/blog/categories/philosophy/'>philosophy</a>, <a class='category' href='/blog/categories/quick/'>quick</a>
+    <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/loud-mouth/'>loud mouth</a>, <a class='category' href='/blog/categories/mac-os-x/'>mac os x</a>, <a class='category' href='/blog/categories/quickie/'>quickie</a>
   
 </span>
 
@@ -153,10 +198,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2013/12/etcpasswd-illustrated.html" title="Previous Post: /etc/passwd illustrated">&laquo; /etc/passwd illustrated</a>
+        <a class="basic-alignment left" href="/2014/02/the-awesome-of-web-browsing-with-emacs.html" title="Previous Post: The awesome of web browsing with Emacs">&laquo; The awesome of web browsing with Emacs</a>
       
-      
-        <a class="basic-alignment right" href="/2014/01/5-things-i-frequently-do-and-forget.html" title="Next Post: 5 things I frequently do and forget with git">5 things I frequently do and forget with git &raquo;</a>
       
     </p>
   </footer>
@@ -238,8 +281,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://\.github.io/\/github/2013/12/yet-another-post-about-unix-philosophy.html';
-        var disqus_url = 'http://\.github.io/\/github/2013/12/yet-another-post-about-unix-philosophy.html';
+        var disqus_identifier = 'http://\.github.io/\/github/2014/10/how-to-find-which-application-is-running-on-a-particular-port.html';
+        var disqus_url = 'http://\.github.io/\/github/2014/10/how-to-find-which-application-is-running-on-a-particular-port.html';
         var disqus_script = 'embed.js';
       
     (function () {

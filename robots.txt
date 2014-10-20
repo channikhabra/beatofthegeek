@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://beatofthegeek.com/sitemap.xml 
+Sitemap: http://\.github.io/\/github/sitemap.xml 
