@@ -92,8 +92,8 @@
     <div id="main">
       <div id="content">
 	<div>
-<article class="hentry" role="article">
-  
+    <article class="hentry" role="article">
+        
   <header>
     
       <h1 class="entry-title">Setting Up Your Own LAMP Machine for PHP Development -Setting MySql and PHP</h1>
@@ -125,6 +125,18 @@
 <div dir="ltr" style="text-align: left;" trbidi="on">&lt;&lt; Previous:&nbsp;<a href="http://channikhabra.blogspot.in/2012/06/setting-up-you-own-home-lamp-machine.html" target="">Setting up Apache</a><br /><br />Well, after setting up the apache http daemon, it&#8217;s time for the database management system, the &#8216;M&#8217; of LAMP.<br /><h3 style="text-align: left;">   </h3><h3 style="text-align: left;">    Installing MySql</h3>It can&#8217;t be easier. Just shoot the terminal and type:<br /><blockquote class="tr_bq"><code>sudo apt-get install mysql-server</code></blockquote>Yup! That&#8217;s it. You&#8217;ll get some prompts and will be asked to enter the password for root user (root user of MySql not the Operating System). Just enter the details and that&#8217;s all for the MySql.<br /><h4 style="text-align: left;">    Removing Mysql from Startup</h4>Yeah, just like Apache daemon, mysql put itself on startup too. And it will not get removed by just running update-rc.d. We need to comment out a couple lines in the mysql.conf file. So, shoot the terminal and do this.<br /><br /><!-- more --><br /><br /><ul style="text-align: left;"><li><span style="background-color: white;"><code>sudo kate (or gedit) /etc/init/mysql.conf</code></span></li><li><span style="background-color: white;">Comment out the two starting lines (they should say &#8220;start on&#8221; and something)</span></li></ul><div>That&#8217;s it. MySql is now removed from the startup. To run the Mysql daemon after this, use following command</div><blockquote class="tr_bq"><code>sudo service mysql start</code></blockquote><br /><br /><h3 style="text-align: left;">    Installing PHP5</h3>After we&#8217;ve set Apache and MySql, it is time for the real sexy. Although PHP can be installed via Ubuntu packages with <i>apt-get install php5</i>, but it will install php5.3(.something). That&#8217;s no good as we wanna use the latest version. Remember I told you about the inbuilt server provided with php that almost eliminates the need for the Apache server in development environment? It come with PHP5.4 and is not available in PHP5.3. Beside that there are many more <a href="http://php.net/releases/5_4_0.php" target="_blank">awesome features</a> which make it worth installing. So let&#8217;s install the latest version of PHP.<br /><h3 style="text-align: left;">    Installing Latest PHP in Ubuntu</h3>Shoot the terminal and enter following commands:<br /><blockquote class="tr_bq"><code>sudo add-apt-repository ppa:ondrej/php5</code></blockquote>And then update apt-get repository info and install apache php mod, php5 itself and php mysql extension to use mysql with php.<br /><blockquote class="tr_bq"><code>sudo apt-get update<br />sudo apt-get install php5 libapache2-mod-php5 php5-mysql</code></blockquote><h4 style="text-align: left;">    <span style="background-color: white;">Running PHP server (not Apache)</span></h4>To run the php server instead of Apache, just run following command in terminal.<br /><blockquote class="tr_bq"><code>php -S localhost:8080</code></blockquote>This will run a server listening at port 8080. So, we&#8217;ll need to go to <a href="http://localhost:8080/">http://localhost:8080</a>&nbsp;to run the server. In order to run the server as simply <a href="http://localhost/">http://localhost</a>, we&#8217;ll need to run the server at port 80, and for that we need to run the above command with sudo and 80 instead of 8080. Here&#8217;s what I mean:<br /><blockquote class="tr_bq"><code>sudo php -S localhost:80</code></blockquote><h3 style="text-align: left;">    <span style="background-color: white;">Benefits of using PHP Server</span></h3><br /><ul style="text-align: left;"><li><span style="background-color: white;">PHP server run as the current working directory as the root server dir. So there is no need to go through the hassle of creating different sites in apache.</span></li><li><span style="background-color: white;">Running php server helps a lot in debugging by displaying all the messages, errors and warnings in the terminal itself. So no need to change php.ini to enable debugging or use some other method.&nbsp;</span></li><li><span style="background-color: white;">It is really cool to use it (don&#8217;t know why, but I feel like it is cool :P)</span></li></ul><div>Here&#8217;s a snapshot of how it look when running php server.<br /><br /><br /></div><div><span id="goog_2392878"></span><span id="goog_2392879"></span></div><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-_raAYxZsmQI/T_Ad5Kwo0CI/AAAAAAAAAQk/gUaZ2-1J7ho/s1600/snapshot1.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="205" src="http://2.bp.blogspot.com/-_raAYxZsmQI/T_Ad5Kwo0CI/AAAAAAAAAQk/gUaZ2-1J7ho/s400/snapshot1.png" width="400" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"></div><br /></div></div>
 </div>
 
+
+<div style="float: right; margin: 5px;">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Sidebar Square -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:250px;height:250px"
+             data-ad-client="ca-pub-1201977533541538"
+             data-ad-slot="4441137203"></ins>
+        <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
 
   <footer>
     <p class="meta">

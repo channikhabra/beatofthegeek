@@ -92,8 +92,8 @@
     <div id="main">
       <div id="content">
 	<div>
-<article class="hentry" role="article">
-  
+    <article class="hentry" role="article">
+        
   <header>
     
       <h1 class="entry-title">Differnet Ways of Accessing a Commit in Git</h1>
@@ -125,6 +125,18 @@
 <div dir="ltr" style="text-align: left;" trbidi="on">Ok, so it&#8217;s been quite long since I wrote anything for this blog. I made a resolution earlier about &#8216;a post a day&#8217; which is apparently shattered. So here&#8217;s a quick and dirty posts straight from my notes to help bringing me back on track. Any help it does to anyone else is a bonus :)<br /><br />So as we discussed in a previous post, there are many names for a commit (noun) in git. We may call it a branch, a tag, or just a commit, they are just different ways of accessing a commit.<br /><br />So, here&#8217;s an incomplete list of different ways in which we can access a commit in git. <br /><br /><!-- more --><br /><br /><h4 style="text-align: left;">branch name</h4><div style="text-align: left;">A branch in git is nothing but a named commit. So whenever we are referring to a branch, we are basically just accessing a commit. </div><h4 style="text-align: left;">tag name</h4>Same is true for tags as branches in git. The only difference between a tag and a branch is that tags can have their own descriptions. <br /><h4 style="text-align: left;">HEAD</h4>HEAD represents currently checked-out commit. It&#8217;s basically just a pointer to a commit.<br /><h4 style="text-align: left;">c23a23c43 </h4>A commit can of course be accessed with its full or abbreviated hash id. Abbreviated hash id is the hash id of the commit with minimum number of characters that are required to uniquely identify the commit. These are generally 7-8.<br /><blockquote class="tr_bq">from here on I am using word &#8216;name&#8217; for any of the above mentioned ways of accessing a commit.</blockquote><h4 style="text-align: left;">name^&nbsp; and also name^^ </h4>Represents the parent of a commit. If multiple parents present, represent the first parent. More &#8216;^&#8217; means higher up the chain.<br /><h4>name^2</h4>It represents second parent of the commit if multiple parents are present<br /><h4 style="text-align: left;">name~5</h4>Same as name^^^^^<br /><h4 style="text-align: left;">name:path</h4>References a certain file within a commit&#8217;s content tree<br /><h4 style="text-align: left;">name^{tree}</h4>Reference just the tree held by the commit, rather than the commit itself<br /><h4 style="text-align: left;">name1..name2</h4>A commit range. Refers to all commits reachable from name2 to name1. If either name1 or name2 is omitted, HEAD is used in its place.<br /><h4 style="text-align: left;">name1&#8230;name2</h4>For git log, it refers to all commits referenced by name1 or name2, but not by both.<br />For git diff, the range expressed is between name2 and the common ancestor of name1 and name2.<br /><h4 style="text-align: left;">&#8211;since=&#8221;2 weeks ago&#8221;</h4>Refers to all commits since a certain date<br /><h4 style="text-align: left;">&#8211;until=&#8221;1 week ago&#8221;</h4>Refers to all commits up to a certain date<br /><h4 style="text-align: left;">&#8211;grep=pattern</h4>Refers to all commits whose commit message matches the regular expression<br /><h4 style="text-align: left;">&#8211;committer=pattern</h4>Refers to all commits whose committer matches the pattern<br /><h4 style="text-align: left;">&#8211;no-merges</h4>Refers to all commits in the range that have only one parent</div></div>
 </div>
 
+
+<div style="float: right; margin: 5px;">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Sidebar Square -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:250px;height:250px"
+             data-ad-client="ca-pub-1201977533541538"
+             data-ad-slot="4441137203"></ins>
+        <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
 
   <footer>
     <p class="meta">
